@@ -2,7 +2,7 @@
 
 ArcPort Guard is an open-source Arc deployment compatibility agent. Its zero-dependency CLI and local-only browser scanner find Arc-specific risks in Solidity and JavaScript/TypeScript projects before deployment.
 
-**[Try the browser agent](https://arc-brown-delta.vercel.app/)** — paste code, upload files or a folder, or load a public GitHub repository. Analysis stays in the browser and reports export as JSON or Markdown.
+**[Try the browser agent](https://arcport-guard.vercel.app/)** — paste code, upload files or a folder, or load a public GitHub repository. Analysis stays in the browser and reports export as JSON or Markdown.
 
 Arc is EVM compatible, but its native USDC model and protocol behavior differ from Ethereum in important ways. Standard local EVM simulators cannot reproduce every Arc-specific behavior, so a contract can pass locally and still fail or behave incorrectly on Arc.
 

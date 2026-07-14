@@ -9,7 +9,7 @@
     "security",
     "static-analysis"
   ],
-  "homepage": "https://arc-brown-delta.vercel.app/",
+  "homepage": "https://arcport-guard.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/encoderrrr/arcport-guard.git"
