@@ -1,0 +1,41 @@
+{
+  "name": "arcport-guard",
+  "version": "0.1.0",
+  "description": "Static compatibility scanner for contracts and apps targeting Arc Network",
+  "keywords": [
+    "arc-network",
+    "solidity",
+    "smart-contracts",
+    "security",
+    "static-analysis"
+  ],
+  "homepage": "https://arc-brown-delta.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/encoderrrr/arcport-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/encoderrrr/arcport-guard/issues"
+  },
+  "type": "module",
+  "files": [
+    "src",
+    "arcport.config.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "arcport": "./src/cli.js"
+  },
+  "scripts": {
+    "build": "node scripts/build-site.js",
+    "dev:site": "node scripts/serve-site.js",
+    "scan:demo": "node src/cli.js scan test/fixtures/risky --no-color",
+    "test": "node --test test/scanner.test.js",
+    "check": "npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

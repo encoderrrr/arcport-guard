@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArcPort Guard catches Arc Network compatibility risks in Solidity and TypeScript before deployment.">
+    <meta name="theme-color" content="#080b0f">
+    <meta property="og:title" content="ArcPort Guard — Ship to Arc with confidence">
+    <meta property="og:description" content="An open-source compatibility scanner for Arc Network contracts and apps.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arc-brown-delta.vercel.app/">
+    <meta property="og:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=9">
+    <meta property="og:image:alt" content="ArcPort Guard animated logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ArcPort Guard — Arc compatibility scanner">
+    <meta name="twitter:description" content="Catch Arc-specific Solidity and TypeScript risks before deployment.">
+    <meta name="twitter:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=9">
+    <link rel="canonical" href="https://arc-brown-delta.vercel.app/">
+    <link rel="icon" href="/assets/arcport-logo.gif?v=9" type="image/gif">
+    <title>ArcPort Guard — Arc compatibility scanner</title>
+    <link rel="stylesheet" href="/styles.css?v=9">
+    <script src="/app.js?v=9" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="ArcPort Guard home">
+        <span class="brand-video-frame" aria-hidden="true">
+          <img class="brand-video" src="/assets/arcport-logo.gif?v=9" alt="" width="180" height="180">
+          <span class="brand-video-glow"></span>
+        </span>
+        <span>ArcPort <strong>Guard</strong></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#why">Why</a>
+        <a href="#rules">Rules</a>
+        <a href="#playground">Playground</a>
+        <a href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+      <a class="button button-small button-ghost" href="#install">Get the CLI</a>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-gap-media" aria-hidden="true">
+          <img class="hero-gap-video" src="/assets/arcport-logo.gif?v=9" alt="" width="180" height="180">
+        </div>
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> Open-source Arc safety tooling</div>
+          <h1>Ship to Arc.<br><span>Leave Ethereum assumptions behind.</span></h1>
+          <p class="hero-lede">Catch Arc-specific contract and app risks before deployment—from native USDC precision to deterministic finality and unsupported EVM behavior.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#playground">Scan sample code <span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="#rules">Explore the rules</a>
+          </div>
+          <div class="trust-row" aria-label="Product features">
+            <span><i aria-hidden="true">✓</i> Zero dependencies</span>
+            <span><i aria-hidden="true">✓</i> CI-ready exit codes</span>
+            <span><i aria-hidden="true">✓</i> Built for Arc</span>
+          </div>
+        </div>
+
+        <div class="terminal-shell" aria-label="ArcPort Guard terminal example">
+          <div class="terminal-bar">
+            <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span>arcport — scan</span>
+            <span class="terminal-status">● LIVE</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> arcport scan ./contracts</p>
+            <p class="terminal-muted">Scanning 14 Solidity files...</p>
+            <div class="terminal-finding critical">
+              <div><span>CRITICAL</span> ARC002</div>
+              <strong>PREVRANDAO is always zero on Arc</strong>
+              <p>Lottery.sol:42:27</p>
+            </div>
+            <div class="terminal-finding high">
+              <div><span>HIGH</span> ARC001</div>
+              <strong>USDC precision mismatch</strong>
+              <p>PaymentVault.sol:84:16</p>
+            </div>
+            <div class="terminal-summary">
+              <span>2 issues found</span>
+              <span class="terminal-failed">CHECK FAILED</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="metric-strip" aria-label="ArcPort Guard metrics">
+        <div><strong>11</strong><span>Arc-specific checks</span></div>
+        <div><strong>0</strong><span>Runtime dependencies</span></div>
+        <div><strong>&lt;1s</strong><span>Typical scan time</span></div>
+        <div><strong>3</strong><span>Output severities + critical</span></div>
+      </section>
+
+      <section class="section why" id="why">
+        <div class="section-heading">
+          <span class="section-index">01 / WHY</span>
+          <h2>EVM-compatible does not mean identical.</h2>
+          <p>Arc keeps the Ethereum developer experience while changing the assumptions that matter most for programmable money.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card feature-card-wide">
+            <div class="feature-icon precision-icon" aria-hidden="true"><span>18</span><span>6</span></div>
+            <div>
+              <span class="feature-label">PRECISION</span>
+              <h3>One USDC balance. Two decimal interfaces.</h3>
+              <p>Native USDC uses 18 decimals while the ERC-20 interface uses 6. ArcPort finds raw comparisons before they become expensive accounting bugs.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon dice-icon" aria-hidden="true">0x00</div>
+            <span class="feature-label">RANDOMNESS</span>
+            <h3>Predictable is not random.</h3>
+            <p><code>PREVRANDAO</code> returns zero on Arc. We flag insecure randomness at the source.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon time-icon" aria-hidden="true">≡</div>
+            <span class="feature-label">ORDERING</span>
+            <h3>Same timestamp. Different blocks.</h3>
+            <p>Sub-second blocks can share a timestamp. Use block numbers when order matters.</p>
+          </article>
+          <article class="feature-card feature-card-wide finality-card">
+            <div class="finality-visual" aria-hidden="true">
+              <span>Pending</span><i></i><span>Final</span>
+            </div>
+            <div>
+              <span class="feature-label">FINALITY</span>
+              <h3>No confirmation theater.</h3>
+              <p>Arc finalizes on inclusion. ArcPort catches unnecessary multi-confirmation waits that make fast settlement feel slow.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section rules-section" id="rules">
+        <div class="section-heading compact">
+          <span class="section-index">02 / RULES</span>
+          <h2>Focused checks. Actionable fixes.</h2>
+          <p>Every finding includes a location, a clear explanation, a suggested repair, and the relevant Arc documentation.</p>
+        </div>
+        <div class="rules-table" role="table" aria-label="ArcPort Guard rules">
+          <div class="rule-row rule-head" role="row">
+            <span role="columnheader">Rule</span><span role="columnheader">What it catches</span><span role="columnheader">Severity</span>
+          </div>
+          <div class="rule-row" role="row"><code>ARC001</code><span>Native and ERC-20 USDC precision mismatch</span><b class="severity high">HIGH</b></div>
+          <div class="rule-row" role="row"><code>ARC002</code><span>Predictable PREVRANDAO randomness</span><b class="severity critical">CRITICAL</b></div>
+          <div class="rule-row" role="row"><code>ARC004</code><span>Unsupported EIP-4844 blob transactions</span><b class="severity high">HIGH</b></div>
+          <div class="rule-row" role="row"><code>ARC005</code><span>Arc-specific SELFDESTRUCT value behavior</span><b class="severity high">HIGH</b></div>
+          <div class="rule-row" role="row"><code>ARC007</code><span>Strict block timestamp ordering</span><b class="severity medium">MEDIUM</b></div>
+          <div class="rule-row" role="row"><code>ARC011</code><span>Unnecessary extra confirmations</span><b class="severity low">LOW</b></div>
+        </div>
+        <p class="rules-footnote">Plus beacon roots, zero-address value transfers, gas symbol errors, timestamp-sorted indexers, and USDC parsing checks.</p>
+      </section>
+
+      <section class="section playground-section" id="playground">
+        <div class="section-heading compact">
+          <span class="section-index">03 / PLAYGROUND</span>
+          <h2>Break it here, not onchain.</h2>
+          <p>Try the browser scanner with this intentionally risky Solidity contract. Your code never leaves the page.</p>
+        </div>
+        <div class="playground">
+          <div class="editor-pane">
+            <div class="pane-header">
+              <span><i class="file-dot" aria-hidden="true"></i> <span id="active-file">PaymentVault.sol</span></span>
+              <div class="pane-actions">
+                <label class="text-button upload-button" for="file-upload">Upload files</label>
+                <input class="sr-only" id="file-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" multiple>
+                <label class="text-button upload-button folder-upload-label" for="folder-upload">Upload folder</label>
+                <input class="sr-only" id="folder-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" webkitdirectory multiple>
+                <button class="text-button" id="reset-code" type="button">Reset sample</button>
+              </div>
+            </div>
+            <label class="sr-only" for="code-input">Solidity code to scan</label>
+            <textarea id="code-input" spellcheck="false" autocapitalize="off"></textarea>
+            <div class="editor-footer">
+              <span id="scan-summary">0 lines</span>
+              <button class="button button-primary scan-button" id="scan-button" type="button">Run ArcPort scan <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <div class="results-pane">
+            <div class="pane-header">
+              <span>Findings</span>
+              <div class="result-tools">
+                <button class="text-button" id="export-json" type="button" disabled>JSON</button>
+                <button class="text-button" id="export-markdown" type="button" disabled>Markdown</button>
+                <span class="result-count" id="result-count">Ready</span>
+              </div>
+            </div>
+            <div class="results-list" id="results-list" aria-live="polite">
+              <div class="empty-state">
+                <span class="empty-shield" aria-hidden="true">⌁</span>
+                <strong>Ready to inspect</strong>
+                <p>Run the scan to reveal Arc-specific compatibility risks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section install-section" id="install">
+        <div class="install-copy">
+          <span class="section-index">04 / INSTALL</span>
+          <h2>Put ArcPort in the path to production.</h2>
+          <p>Run it locally, return JSON to your own tooling, or fail a pull request before an Arc incompatibility ships.</p>
+        </div>
+        <div class="install-terminal">
+          <div class="install-tabs" role="tablist" aria-label="Installation commands">
+            <button type="button" role="tab" aria-selected="true" data-command="npx github:encoderrrr/arcport-guard scan .">npx</button>
+            <button type="button" role="tab" aria-selected="false" data-command="npx github:encoderrrr/arcport-guard scan . --format json">JSON</button>
+            <button type="button" role="tab" aria-selected="false" data-command="- uses: encoderrrr/arcport-guard@v0.1.0">GitHub Action</button>
+          </div>
+          <div class="command-row">
+            <code id="install-command">npx github:encoderrrr/arcport-guard scan .</code>
+            <button class="copy-button" id="copy-command" type="button" aria-label="Copy installation command">Copy</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section">
+        <p>Ethereum tooling got you this far.</p>
+        <h2>ArcPort gets you safely across.</h2>
+        <a class="button button-primary" href="#playground">Try the scanner <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ArcPort <strong>Guard</strong></span>
+      </a>
+      <p>Open-source compatibility tooling for Arc Network.</p>
+      <a href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub · v0.1.0</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+name: "ArcPort Guard"
+description: "Scan Solidity and TypeScript for Arc Network compatibility risks"
+inputs:
+  path:
+    description: "File or directory to scan"
+    required: false
+    default: "."
+  fail-on:
+    description: "Minimum severity that fails the check"
+    required: false
+    default: "high"
+runs:
+  using: "composite"
+  steps:
+    - name: Scan for Arc compatibility risks
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/src/cli.js" scan "${{ inputs.path }}" --fail-on "${{ inputs.fail-on }}" --no-color
+branding:
+  icon: "shield"
+  color: "blue"

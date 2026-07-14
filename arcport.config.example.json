@@ -1,0 +1,4 @@
+{
+  "ignore": ["vendor", "generated"],
+  "disabledRules": ["ARC011"]
+}
