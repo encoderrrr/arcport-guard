@@ -1,7 +1,7 @@
 {
   "name": "arcport-guard",
   "version": "0.1.0",
-  "description": "Static compatibility scanner for contracts and apps targeting Arc Network",
+  "description": "Open-source Arc deployment compatibility agent for Solidity and TypeScript projects",
   "keywords": [
     "arc-network",
     "solidity",

@@ -3,276 +3,260 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ArcPort Guard catches Arc Network compatibility risks in Solidity and TypeScript before deployment.">
+    <meta name="description" content="ArcPort Guard is an open-source Arc deployment compatibility agent for Solidity and TypeScript projects.">
     <meta name="theme-color" content="#080b0f">
-    <meta property="og:title" content="ArcPort Guard — Ship to Arc with confidence">
-    <meta property="og:description" content="An open-source compatibility scanner for Arc Network contracts and apps.">
+    <meta property="og:title" content="ArcPort Guard — Your Arc Deployment Copilot">
+    <meta property="og:description" content="Understand Arc-specific compatibility risks and generate safer fixes before deployment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arc-brown-delta.vercel.app/">
-    <meta property="og:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=10">
+    <meta property="og:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=11">
     <meta property="og:image:alt" content="ArcPort Guard animated logo">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ArcPort Guard — Arc compatibility scanner">
-    <meta name="twitter:description" content="Catch Arc-specific Solidity and TypeScript risks before deployment.">
-    <meta name="twitter:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=10">
+    <meta name="twitter:title" content="ArcPort Guard — Your Arc Deployment Copilot">
+    <meta name="twitter:description" content="Local Arc compatibility analysis for Solidity and TypeScript projects.">
+    <meta name="twitter:image" content="https://arc-brown-delta.vercel.app/assets/arcport-logo.gif?v=11">
     <link rel="canonical" href="https://arc-brown-delta.vercel.app/">
-    <link rel="icon" href="/assets/arcport-logo.gif?v=10" type="image/gif">
-    <title>ArcPort Guard — Arc compatibility scanner</title>
-    <link rel="stylesheet" href="/styles.css?v=10">
-    <script src="/app.js?v=10" defer></script>
+    <link rel="icon" href="/assets/arcport-logo.gif?v=11" type="image/gif">
+    <title>ArcPort Guard — Your Arc Deployment Copilot</title>
+    <link rel="stylesheet" href="/styles.css?v=11">
+    <script src="/app.js?v=11" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="ambient ambient-one" aria-hidden="true"></div>
-    <div class="ambient ambient-two" aria-hidden="true"></div>
-    <div class="network-grid" aria-hidden="true"></div>
-    <div class="pointer-glow" id="pointer-glow" aria-hidden="true"></div>
+    <div class="page-grid" aria-hidden="true"></div>
+    <div class="ambient ambient-blue" aria-hidden="true"></div>
+    <div class="ambient ambient-violet" aria-hidden="true"></div>
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="ArcPort Guard home">
-        <span class="brand-video-frame" aria-hidden="true">
-          <img class="brand-video" src="/assets/arcport-logo.gif?v=10" alt="" width="180" height="180">
-          <span class="brand-video-glow"></span>
+        <span class="brand-media" aria-hidden="true">
+          <img src="/assets/arcport-logo.gif?v=11" alt="" width="180" height="180">
         </span>
         <span>ArcPort <strong>Guard</strong></span>
       </a>
       <nav aria-label="Main navigation">
-        <a href="#workflow">How</a>
+        <a href="#playground">Scanner</a>
+        <a href="#workflow">Workflow</a>
         <a href="#rules">Rules</a>
-        <a href="#playground">Playground</a>
-        <a href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#roadmap">Roadmap</a>
       </nav>
-      <a class="button button-small button-ghost" href="#install">Get the CLI</a>
+      <a class="button button-small button-secondary" href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </header>
 
     <main id="main">
       <section class="hero" id="top">
-        <div class="hero-gap-media" aria-hidden="true">
-          <img class="hero-gap-video" src="/assets/arcport-logo.gif?v=10" alt="" width="180" height="180">
-        </div>
         <div class="hero-copy">
-          <div class="eyebrow"><span class="pulse"></span> Open-source Arc safety tooling</div>
-          <h1>Ship to Arc.<br><span class="gradient-copy">Leave Ethereum assumptions behind.</span></h1>
-          <p class="hero-lede">Catch Arc-specific contract and app risks before deployment—from native USDC precision to deterministic finality and unsupported EVM behavior.</p>
+          <div class="eyebrow"><span class="status-dot"></span> Open-source Arc deployment agent</div>
+          <h1>Your Arc<br><span>Deployment Copilot</span></h1>
+          <p class="hero-lede">Scan Solidity and TypeScript projects, understand Arc-specific compatibility risks, and generate safer fixes before deployment.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#playground">Scan sample code <span aria-hidden="true">↘</span></a>
-            <a class="button button-ghost" href="#rules">Explore the rules</a>
+            <a class="button button-primary" href="#playground">Scan a contract now <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="trust-row neon-trust" aria-label="Product features">
-            <span><i aria-hidden="true">✓</i> Zero dependencies</span>
-            <span><i aria-hidden="true">✓</i> CI-ready exit codes</span>
-            <span><i aria-hidden="true">✓</i> Built for Arc</span>
+          <div class="trust-badges" aria-label="Product trust indicators">
+            <span><i aria-hidden="true">✓</i> Local-only browser analysis</span>
+            <span><i aria-hidden="true">✓</i> Zero runtime dependencies</span>
+            <span><i aria-hidden="true">✓</i> CI-ready</span>
+            <span><i aria-hidden="true">✓</i> Built specifically for Arc</span>
           </div>
         </div>
 
-        <div class="terminal-shell" aria-label="ArcPort Guard terminal example">
+        <div class="terminal-demo" aria-label="Animated ArcPort Guard scan example">
           <div class="terminal-bar">
             <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-            <span>arcport — scan</span>
-            <span class="terminal-status"><i></i> LIVE SCAN</span>
+            <span>arcport-agent / compatibility scan</span>
+            <button class="terminal-restart" id="restart-demo" type="button" aria-label="Restart terminal demonstration">Restart</button>
           </div>
           <div class="terminal-body">
-            <p class="terminal-command"><span class="prompt">$</span> <span id="terminal-command-text">arcport scan ./contracts</span><span class="terminal-caret" aria-hidden="true"></span></p>
-            <p class="terminal-muted" id="terminal-scan-text">Scanning 14 Solidity files...</p>
+            <p><span class="prompt">$</span> arcport scan ./contracts <span class="terminal-caret" aria-hidden="true"></span></p>
+            <div class="terminal-step" data-demo-step="1"><span class="terminal-time">00:01</span><span>Indexing Solidity and TypeScript files</span><b>14 files</b></div>
+            <div class="terminal-step" data-demo-step="2"><span class="terminal-time">00:02</span><span>Applying 11 Arc compatibility rules</span><b>running</b></div>
             <div class="terminal-progress" aria-hidden="true"><span id="terminal-progress-bar"></span></div>
-            <div class="terminal-finding critical demo-finding is-hidden">
-              <div><span>CRITICAL</span> ARC002</div>
+            <article class="terminal-finding critical" data-demo-step="3">
+              <div><span>CRITICAL · ARC002</span><code>Lottery.sol:42</code></div>
               <strong>PREVRANDAO is always zero on Arc</strong>
-              <p>Lottery.sol:42:27</p>
-            </div>
-            <div class="terminal-finding high demo-finding is-hidden">
-              <div><span>HIGH</span> ARC001</div>
-              <strong>USDC precision mismatch</strong>
-              <p>PaymentVault.sol:84:16</p>
-            </div>
-            <div class="terminal-summary demo-summary is-hidden">
-              <span>2 issues found</span>
-              <span class="terminal-failed">CHECK FAILED</span>
+              <p>Randomness becomes predictable. Use an Arc-compatible oracle or VRF.</p>
+            </article>
+            <article class="terminal-finding high" data-demo-step="4">
+              <div><span>HIGH · ARC001</span><code>PaymentVault.sol:84</code></div>
+              <strong>Native and ERC-20 USDC precision mismatch</strong>
+              <p>Normalize native 18-decimal values before comparing with ERC-20 USDC.</p>
+            </article>
+            <div class="terminal-summary" data-demo-step="5">
+              <span>14 files · 2 findings · 0 uploaded</span>
+              <strong>CHECK FAILED</strong>
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="metric-strip" aria-label="ArcPort Guard metrics">
-        <div><strong>11</strong><span>Arc-specific checks</span></div>
-        <div><strong>0</strong><span>Runtime dependencies</span></div>
-        <div><strong>&lt;1s</strong><span>Typical scan time</span></div>
-        <div><strong>4</strong><span>Severity levels</span></div>
-      </section>
-
-      <section class="section workflow-section" id="workflow">
-        <div class="section-heading compact">
-          <span class="section-index">01 / HOW IT WORKS</span>
-          <h2>From source code to a safer Arc release.</h2>
-          <p>Fast enough for a local loop. Strict enough for the path to production.</p>
-        </div>
-        <div class="workflow-grid">
-          <article class="workflow-card">
-            <span class="workflow-number">01</span>
-            <div class="workflow-icon upload-icon" aria-hidden="true">↑</div>
-            <h3>Drop in your code</h3>
-            <p>Upload Solidity or TypeScript, scan a folder, or point the CLI at your repository.</p>
-            <code>arcport scan .</code>
-          </article>
-          <article class="workflow-card workflow-card-featured">
-            <span class="workflow-number">02</span>
-            <div class="workflow-icon scan-icon" aria-hidden="true"><i></i></div>
-            <h3>Catch Arc assumptions</h3>
-            <p>Eleven focused checks inspect USDC precision, opcodes, timestamps, finality, and more.</p>
-            <span class="workflow-live"><i></i> ANALYSIS RUNNING</span>
-          </article>
-          <article class="workflow-card">
-            <span class="workflow-number">03</span>
-            <div class="workflow-icon export-icon" aria-hidden="true">↗</div>
-            <h3>Fix, export, ship</h3>
-            <p>Use actionable fixes, export a report, and block unsafe pull requests in CI.</p>
-            <code>exit 1 on high</code>
-          </article>
-        </div>
-      </section>
-
-      <section class="section why" id="why">
-        <div class="section-heading">
-          <span class="section-index">02 / WHY</span>
-          <h2>EVM-compatible does not mean identical.</h2>
-          <p>Arc keeps the Ethereum developer experience while changing the assumptions that matter most for programmable money.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card feature-card-wide">
-            <div class="feature-icon precision-icon" aria-hidden="true"><span>18</span><span>6</span></div>
-            <div>
-              <span class="feature-label">PRECISION</span>
-              <h3>One USDC balance. Two decimal interfaces.</h3>
-              <p>Native USDC uses 18 decimals while the ERC-20 interface uses 6. ArcPort finds raw comparisons before they become expensive accounting bugs.</p>
-            </div>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon dice-icon" aria-hidden="true">0x00</div>
-            <span class="feature-label">RANDOMNESS</span>
-            <h3>Predictable is not random.</h3>
-            <p><code>PREVRANDAO</code> returns zero on Arc. We flag insecure randomness at the source.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon time-icon" aria-hidden="true">≡</div>
-            <span class="feature-label">ORDERING</span>
-            <h3>Same timestamp. Different blocks.</h3>
-            <p>Sub-second blocks can share a timestamp. Use block numbers when order matters.</p>
-          </article>
-          <article class="feature-card feature-card-wide finality-card">
-            <div class="finality-visual" aria-hidden="true">
-              <span>Pending</span><i></i><span>Final</span>
-            </div>
-            <div>
-              <span class="feature-label">FINALITY</span>
-              <h3>No confirmation theater.</h3>
-              <p>Arc finalizes on inclusion. ArcPort catches unnecessary multi-confirmation waits that make fast settlement feel slow.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section compare-section" id="compare">
-        <div class="section-heading compact">
-          <span class="section-index">03 / SEE THE FIX</span>
-          <h2>One assumption. One expensive bug.</h2>
-          <p>ArcPort does more than raise a warning. Every finding explains the risk and points to a repair.</p>
-        </div>
-        <div class="code-compare">
-          <article class="code-panel code-panel-risk">
-            <div class="code-panel-header"><span>BEFORE</span><b>ARC001 · HIGH</b></div>
-            <pre><code><span class="code-muted">// Native: 18 decimals</span>
-uint256 nativeBalance = address(this).balance;
-
-<span class="code-muted">// ERC-20: 6 decimals</span>
-uint256 tokenBalance = usdc.balanceOf(address(this));
-
-<mark>return nativeBalance == tokenBalance;</mark></code></pre>
-            <p>Raw values look related, but their precision is different.</p>
-          </article>
-          <div class="compare-arrow" aria-hidden="true"><span>→</span><small>NORMALIZE</small></div>
-          <article class="code-panel code-panel-safe">
-            <div class="code-panel-header"><span>AFTER</span><b>ARC SAFE</b></div>
-            <pre><code><span class="code-muted">// Convert native 18 → USDC 6</span>
-uint256 nativeUsdc = nativeBalance / 1e12;
-
-uint256 tokenUsdc = usdc.balanceOf(address(this));
-
-<mark>return nativeUsdc == tokenUsdc;</mark></code></pre>
-            <p>Both balances now use one explicit application unit.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section rules-section" id="rules">
-        <div class="section-heading compact">
-          <span class="section-index">04 / RULES</span>
-          <h2>Focused checks. Actionable fixes.</h2>
-          <p>Every finding includes a location, a clear explanation, a suggested repair, and the relevant Arc documentation.</p>
-        </div>
-        <div class="rules-table" role="table" aria-label="ArcPort Guard rules">
-          <div class="rule-row rule-head" role="row">
-            <span role="columnheader">Rule</span><span role="columnheader">What it catches</span><span role="columnheader">Severity</span>
-          </div>
-          <div class="rule-row" role="row"><code>ARC001</code><span>Native and ERC-20 USDC precision mismatch</span><b class="severity high">HIGH</b></div>
-          <div class="rule-row" role="row"><code>ARC002</code><span>Predictable PREVRANDAO randomness</span><b class="severity critical">CRITICAL</b></div>
-          <div class="rule-row" role="row"><code>ARC004</code><span>Unsupported EIP-4844 blob transactions</span><b class="severity high">HIGH</b></div>
-          <div class="rule-row" role="row"><code>ARC005</code><span>Arc-specific SELFDESTRUCT value behavior</span><b class="severity high">HIGH</b></div>
-          <div class="rule-row" role="row"><code>ARC007</code><span>Strict block timestamp ordering</span><b class="severity medium">MEDIUM</b></div>
-          <div class="rule-row" role="row"><code>ARC011</code><span>Unnecessary extra confirmations</span><b class="severity low">LOW</b></div>
-        </div>
-        <p class="rules-footnote">Plus beacon roots, zero-address value transfers, gas symbol errors, timestamp-sorted indexers, and USDC parsing checks.</p>
       </section>
 
       <section class="section playground-section" id="playground">
-        <div class="section-heading compact">
-          <span class="section-index">05 / PLAYGROUND</span>
-          <h2>Break it here, not onchain.</h2>
-          <p>Try the browser scanner with this intentionally risky Solidity contract. Your code never leaves the page.</p>
+        <div class="section-heading scanner-heading">
+          <div>
+            <span class="section-index">01 / INTERACTIVE AGENT</span>
+            <h2>Inspect a project before it reaches Arc.</h2>
+            <p>Paste code, open local files, or load a public GitHub repository. The browser agent maps every finding to an Arc-specific reason and repair.</p>
+          </div>
+          <aside class="privacy-notice">
+            <span aria-hidden="true">◈</span>
+            <div><strong>Private by design</strong><p>Your source code is processed locally in your browser and is never uploaded.</p></div>
+          </aside>
         </div>
+
+        <div class="source-controls" aria-label="Choose scanner source">
+          <button class="source-button" id="load-sample" type="button"><span aria-hidden="true">{ }</span><b>Risky sample</b><small>Load example code</small></button>
+          <label class="source-button" for="file-upload" role="button" tabindex="0"><span aria-hidden="true">↑</span><b>Upload files</b><small>.sol, .ts, .js</small></label>
+          <input class="sr-only" id="file-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" multiple>
+          <label class="source-button" for="folder-upload" role="button" tabindex="0"><span aria-hidden="true">▱</span><b>Upload folder</b><small>Up to 100 files</small></label>
+          <input class="sr-only" id="folder-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" webkitdirectory multiple>
+          <div class="repo-source">
+            <label for="repo-url">Public GitHub repository</label>
+            <div class="repo-input-row">
+              <input id="repo-url" type="url" inputmode="url" placeholder="https://github.com/owner/repository" autocomplete="url">
+              <button class="button button-secondary button-compact" id="load-repo" type="button">Load repo</button>
+            </div>
+          </div>
+        </div>
+
         <div class="playground">
           <div class="editor-pane">
             <div class="pane-header">
-              <span><i class="file-dot" aria-hidden="true"></i> <span id="active-file">PaymentVault.sol</span></span>
-              <div class="pane-actions">
-                <label class="text-button upload-button" for="file-upload">Upload files</label>
-                <input class="sr-only" id="file-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" multiple>
-                <label class="text-button upload-button folder-upload-label" for="folder-upload">Upload folder</label>
-                <input class="sr-only" id="folder-upload" type="file" accept=".sol,.ts,.tsx,.js,.jsx,.mjs,.cjs" webkitdirectory multiple>
-                <button class="text-button" id="reset-code" type="button">Reset sample</button>
+              <label for="active-file-select"><i class="file-dot" aria-hidden="true"></i> Active file</label>
+              <div class="pane-selects">
+                <select id="active-file-select" aria-label="Select active file"></select>
+                <label class="sr-only" for="code-language">Code language</label>
+                <select id="code-language" aria-label="Code language">
+                  <option value="sol">Solidity</option>
+                  <option value="ts">TypeScript</option>
+                </select>
               </div>
             </div>
-            <label class="sr-only" for="code-input">Solidity code to scan</label>
-            <textarea id="code-input" spellcheck="false" autocapitalize="off"></textarea>
+            <label class="sr-only" for="code-input">Solidity or TypeScript code to scan</label>
+            <textarea id="code-input" spellcheck="false" autocapitalize="off" aria-describedby="editor-help"></textarea>
+            <p class="sr-only" id="editor-help">Paste Solidity or TypeScript source code, then run the ArcPort scan.</p>
             <div class="editor-footer">
-              <span id="scan-summary">0 lines</span>
-              <button class="button button-primary scan-button" id="scan-button" type="button">Run ArcPort scan <span aria-hidden="true">→</span></button>
+              <span id="scan-summary">1 file · 0 lines</span>
+              <div class="editor-actions">
+                <button class="text-button" id="clear-code" type="button">Clear</button>
+                <button class="button button-primary scan-button" id="scan-button" type="button">Run agent scan <span aria-hidden="true">→</span></button>
+              </div>
             </div>
           </div>
+
           <div class="results-pane">
             <div class="pane-header">
-              <span>Findings</span>
+              <span>Agent findings</span>
               <div class="result-tools">
                 <button class="text-button" id="export-json" type="button" disabled>JSON</button>
                 <button class="text-button" id="export-markdown" type="button" disabled>Markdown</button>
                 <span class="result-count" id="result-count">Ready</span>
               </div>
             </div>
-            <div class="results-list" id="results-list" aria-live="polite">
-              <div class="empty-state">
-                <span class="empty-shield" aria-hidden="true">⌁</span>
-                <strong>Ready to inspect</strong>
-                <p>Run the scan to reveal Arc-specific compatibility risks.</p>
-              </div>
-            </div>
+            <div class="results-progress" id="results-progress" aria-hidden="true"><span></span></div>
+            <div class="results-list" id="results-list" aria-live="polite" aria-busy="false"></div>
           </div>
         </div>
       </section>
 
+      <section class="section workflow-section" id="workflow">
+        <div class="section-heading compact">
+          <span class="section-index">02 / AGENT WORKFLOW</span>
+          <h2>Compatibility reasoning you can follow.</h2>
+          <p>ArcPort keeps the path from source to recommendation visible, so every result can be reviewed by a developer.</p>
+        </div>
+        <div class="agent-flow" aria-label="ArcPort Agent workflow">
+          <div class="flow-node"><span aria-hidden="true">▱</span><strong>Repository</strong><small>Solidity + TypeScript</small></div>
+          <i aria-hidden="true">→</i>
+          <div class="flow-node flow-agent"><span aria-hidden="true">A</span><strong>ArcPort Agent</strong><small>Local orchestration</small></div>
+          <i aria-hidden="true">→</i>
+          <div class="flow-node"><span aria-hidden="true">⌕</span><strong>Static analysis</strong><small>11 focused checks</small></div>
+          <i aria-hidden="true">→</i>
+          <div class="flow-node"><span aria-hidden="true">§</span><strong>Arc docs reasoning</strong><small>Official references</small></div>
+          <i aria-hidden="true">→</i>
+          <div class="flow-node"><span aria-hidden="true">±</span><strong>Suggested patch</strong><small>Repair guidance</small></div>
+          <i aria-hidden="true">→</i>
+          <div class="flow-node"><span aria-hidden="true">✓</span><strong>Arc-ready report</strong><small>JSON or Markdown</small></div>
+        </div>
+      </section>
+
+      <section class="section differences-section" id="why">
+        <div class="section-heading compact">
+          <span class="section-index">03 / WHY ARCPORT</span>
+          <h2>EVM-compatible does not mean behaviorally identical.</h2>
+          <p>Arc changes several assumptions that Ethereum-focused tooling may not surface during a normal local test.</p>
+        </div>
+        <div class="difference-grid">
+          <article><span>18 ↔ 6</span><h3>USDC precision</h3><p>Native and ERC-20 interfaces share a balance but expose different decimal precision.</p></article>
+          <article><span>0x00</span><h3>Randomness</h3><p>PREVRANDAO returns zero, making Ethereum-style randomness predictable.</p></article>
+          <article><span>≡</span><h3>Block ordering</h3><p>Sub-second blocks can share timestamps, so ordering needs block-aware keys.</p></article>
+          <article><span>1 conf</span><h3>Finality</h3><p>Transactions are final on inclusion; extra confirmation waits add avoidable latency.</p></article>
+        </div>
+      </section>
+
+      <section class="section rules-section" id="rules">
+        <div class="rules-heading">
+          <div class="section-heading compact">
+            <span class="section-index">04 / RULE EXPLORER</span>
+            <h2>All 11 Arc compatibility checks.</h2>
+            <p>Search the complete rule set. Expand a rule for examples, supported languages, repair guidance, and official documentation.</p>
+          </div>
+          <div class="rule-search-wrap">
+            <label class="sr-only" for="rule-search">Search compatibility rules</label>
+            <span aria-hidden="true">⌕</span>
+            <input id="rule-search" type="search" placeholder="Search by rule, risk, or language">
+          </div>
+        </div>
+        <div class="rule-filters" id="rule-filters" aria-label="Filter rules by severity">
+          <button type="button" data-severity="all" aria-pressed="true">All <span>11</span></button>
+          <button type="button" data-severity="critical" aria-pressed="false">Critical</button>
+          <button type="button" data-severity="high" aria-pressed="false">High</button>
+          <button type="button" data-severity="medium" aria-pressed="false">Medium</button>
+          <button type="button" data-severity="low" aria-pressed="false">Low</button>
+        </div>
+        <div class="rule-grid" id="rule-grid"></div>
+        <p class="rule-empty" id="rule-empty" hidden>No rules match this search.</p>
+      </section>
+
+      <section class="section tools-section" id="tools">
+        <div class="section-heading compact">
+          <span class="section-index">05 / SUPPORTED TOOLS</span>
+          <h2>Fits the stack you already use.</h2>
+          <p>The scanner works at the source level and stays independent of your runtime framework.</p>
+        </div>
+        <div class="tool-grid">
+          <article><span class="tool-mark">S</span><div><strong>Solidity</strong><small>Supported</small></div></article>
+          <article><span class="tool-mark">TS</span><div><strong>TypeScript</strong><small>Supported</small></div></article>
+          <article><span class="tool-mark">H</span><div><strong>Hardhat</strong><small>Source scanning</small></div></article>
+          <article><span class="tool-mark">N</span><div><strong>Next.js</strong><small>App scanning</small></div></article>
+          <article><span class="tool-mark">GH</span><div><strong>GitHub Actions</strong><small>CI integration</small></div></article>
+          <article class="tool-coming"><span class="tool-mark">F</span><div><strong>Foundry</strong><small>Coming soon</small></div></article>
+        </div>
+      </section>
+
+      <section class="section roadmap-section" id="roadmap">
+        <div class="section-heading compact">
+          <span class="section-index">06 / ROADMAP</span>
+          <h2>From static checks to continuous deployment guard.</h2>
+        </div>
+        <ol class="roadmap-list">
+          <li class="roadmap-live"><span>v0.1</span><div><strong>Static compatibility scanner</strong><small>Live</small></div></li>
+          <li><span>v0.2</span><div><strong>AI-generated patches</strong><small>Coming soon</small></div></li>
+          <li><span>v0.3</span><div><strong>Arc Testnet simulation</strong><small>Coming soon</small></div></li>
+          <li><span>v0.4</span><div><strong>GitHub pull-request review agent</strong><small>Coming soon</small></div></li>
+          <li><span>v1.0</span><div><strong>Continuous Arc deployment guard</strong><small>Planned</small></div></li>
+        </ol>
+      </section>
+
+      <section class="limitation-notice" aria-labelledby="limitation-title">
+        <span aria-hidden="true">!</span>
+        <div><strong id="limitation-title">Transparent by design</strong><p>ArcPort performs conservative static compatibility analysis and does not replace a complete smart-contract security audit.</p></div>
+      </section>
+
       <section class="section install-section" id="install">
         <div class="install-copy">
-          <span class="section-index">06 / INSTALL</span>
+          <span class="section-index">07 / INSTALL</span>
           <h2>Put ArcPort in the path to production.</h2>
-          <p>Run it locally, return JSON to your own tooling, or fail a pull request before an Arc incompatibility ships.</p>
+          <p>Run the agent locally, export machine-readable results, or fail a pull request when a high-risk Arc incompatibility appears.</p>
         </div>
         <div class="install-terminal">
           <div class="install-tabs" role="tablist" aria-label="Installation commands">
@@ -288,19 +272,28 @@ uint256 tokenUsdc = usdc.balanceOf(address(this));
       </section>
 
       <section class="closing-section">
-        <p>Ethereum tooling got you this far.</p>
-        <h2>ArcPort gets you safely across.</h2>
-        <a class="button button-primary" href="#playground">Try the scanner <span aria-hidden="true">↗</span></a>
+        <span class="section-index">ARCPORT GUARD</span>
+        <h2>Know what changes before you ship to Arc.</h2>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#playground">Scan a contract now</a>
+          <a class="button button-secondary" href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">Contribute on GitHub</a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span>ArcPort <strong>Guard</strong></span>
-      </a>
-      <p>Open-source compatibility tooling for Arc Network.</p>
-      <a href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub · v0.1.0</a>
+      <div class="footer-brand">
+        <a class="brand" href="#top"><span>ArcPort <strong>Guard</strong></span></a>
+        <p>Open-source deployment compatibility tooling for Arc Network.</p>
+      </div>
+      <div class="footer-links" aria-label="Project links">
+        <a href="https://github.com/encoderrrr/arcport-guard" target="_blank" rel="noreferrer">GitHub repository</a>
+        <a href="https://docs.arc.io/arc/references/evm-differences" target="_blank" rel="noreferrer">Arc documentation</a>
+        <a href="https://github.com/encoderrrr/arcport-guard/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT License</a>
+        <a href="https://github.com/encoderrrr/arcport-guard/issues/new" target="_blank" rel="noreferrer">Report an issue</a>
+        <a href="https://github.com/encoderrrr/arcport-guard#github-action" target="_blank" rel="noreferrer">Contribute</a>
+      </div>
+      <span class="footer-version">v0.1.0 · Open source</span>
     </footer>
   </body>
 </html>
