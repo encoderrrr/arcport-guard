@@ -252,3 +252,79 @@ document.querySelector("#copy-command").addEventListener("click", async (event) 
 });
 
 setSample();
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pointerGlow = document.querySelector("#pointer-glow");
+
+if (!prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+  let pointerFrame = null;
+  window.addEventListener("pointermove", (event) => {
+    if (pointerFrame) return;
+    pointerFrame = window.requestAnimationFrame(() => {
+      pointerGlow.style.transform = `translate3d(${event.clientX - 180}px, ${event.clientY - 180}px, 0)`;
+      pointerFrame = null;
+    });
+  }, { passive: true });
+}
+
+const demoFindings = [...document.querySelectorAll(".demo-finding")];
+const demoSummary = document.querySelector(".demo-summary");
+const demoProgress = document.querySelector("#terminal-progress-bar");
+const demoScanText = document.querySelector("#terminal-scan-text");
+let terminalTimer = null;
+
+function scheduleTerminalStep(callback, delay) {
+  window.setTimeout(callback, delay);
+}
+
+function runTerminalDemo() {
+  demoFindings.forEach((finding) => finding.classList.add("is-hidden"));
+  demoSummary.classList.add("is-hidden");
+  demoProgress.style.width = "0";
+  demoScanText.textContent = "Indexing project files...";
+
+  scheduleTerminalStep(() => {
+    demoProgress.style.width = "34%";
+    demoScanText.textContent = "Scanning 14 Solidity files...";
+  }, 350);
+  scheduleTerminalStep(() => {
+    demoProgress.style.width = "68%";
+    demoFindings[0].classList.remove("is-hidden");
+  }, 1250);
+  scheduleTerminalStep(() => {
+    demoProgress.style.width = "100%";
+    demoFindings[1].classList.remove("is-hidden");
+    demoScanText.textContent = "11 Arc-specific checks complete.";
+  }, 2200);
+  scheduleTerminalStep(() => demoSummary.classList.remove("is-hidden"), 2850);
+  terminalTimer = window.setTimeout(runTerminalDemo, 6500);
+}
+
+if (prefersReducedMotion) {
+  demoProgress.style.width = "100%";
+  demoFindings.forEach((finding) => finding.classList.remove("is-hidden"));
+  demoSummary.classList.remove("is-hidden");
+} else {
+  runTerminalDemo();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      window.clearTimeout(terminalTimer);
+    } else {
+      runTerminalDemo();
+    }
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".workflow-card, .feature-card, .code-panel, .rule-row").forEach((element, index) => {
+    element.classList.add("reveal-item");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 70}ms`);
+    revealObserver.observe(element);
+  });
+}
