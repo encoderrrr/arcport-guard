@@ -156,7 +156,7 @@ label[for]:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; 
 .hero-media {
   position: absolute;
   z-index: 2;
-  left: 53%;
+  left: 45%;
   top: 18%;
   width: clamp(118px, 11vw, 168px);
   height: 245px;
